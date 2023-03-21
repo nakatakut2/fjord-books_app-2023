@@ -1,0 +1,32 @@
+ja:
+  books: "本棚"
+  title: "タイトル"
+  memo: "メモ"
+  author: "著者"
+  picture: "画像"
+  editing_book: "内容の変更"
+  show_this_book: "詳細を見る"
+  new_book: "新しく追加する"
+  create_book: "この内容で決定"
+  edit_this_book: "内容を変更する"
+  back_to_books: "本棚に戻る"
+  destroy_this_book: "この本を削除する"
+  book_was_successfully_created: "新しく追加しました。"
+  book_was_successfully_updated: "更新できました。"
+  book_was_successfully_destroyed: "削除しました。"
+  error: "件のエラー。"
+  prohibited_this_book_from_being_saved: "保存できませんでした。"
+  activerecord:
+    attributes:
+      book:
+        title: "タイトル"
+        memo: "メモ"
+        author: "著者"
+        picture: "画像"
+    errors:
+      models:
+        book:
+          attributes:
+            title:
+              blank: "が入力されていません。"
+
