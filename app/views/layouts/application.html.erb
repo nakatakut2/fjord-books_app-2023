@@ -11,6 +11,17 @@
   </head>
 
   <body class="<%= params[:action] %>">
+    <header>
+      <h1>Books App</h1>
+      <% if user_signed_in? %>
+        <p><%= link_to '本の一覧', books_path %></p>
+        <p><%= link_to 'ユーザー一覧', users_path %></p>
+        <p><%= link_to 'マイページ', user_path(current_user) %></p>
+        <p><%= link_to 'ログアウト', destroy_user_session_path, data: { "turbo-method": :delete } %></p>
+      <% end %>  
+    </header>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

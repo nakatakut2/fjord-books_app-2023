@@ -37,3 +37,7 @@
 /public/uploads
 
 .env
+
+app/helpers/users_helper.rb
+test/fixtures/users.yml
+test/models/user_test.rb
