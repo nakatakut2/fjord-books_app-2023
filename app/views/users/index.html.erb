@@ -1,0 +1,7 @@
+<h1>ユーザーの一覧です</h1>
+
+<% @users.each do |user| %>
+  <p><%= user.name %>さん　<%= link_to "#{user.name}さんのページをみる", user_path(user) %></p>
+<% end %>
+
+<%= paginate @users %>

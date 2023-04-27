@@ -1,0 +1,13 @@
+<h1>ユーザーの詳細ページです</h1>
+
+<p>名前 :  <%= @user.name %></p>
+<p>メールアドレス : <%= @user.email %></p>
+<p>郵便番号 : 〒<%= @user.postal_code %></p>
+<p>住所 : <%= @user.address %></p>
+<p>自己紹介 : <%= @user.profile %></p>
+
+<% if current_user.id == @user.id %>
+  <%= link_to '編集する', edit_user_registration_path %>
+<% end %>
+
+<p><%= link_to 'ユーザー一覧に戻る', users_path %></p>
