@@ -1,4 +1,15 @@
 <div class="field">
+  <%= f.label :icon_image %><br />
+  <p>現在設定中の画像</p>
+    <% if resource.image.attached? %>
+      <%= image_tag resource.image, width: 300 %>
+    <% else %>
+      <%= '：設定されていません' %>
+    <% end %>
+  <p><%= f.file_field :image %></p>
+</div>
+
+<div class="field">
   <%= f.label :name %><br />
   <%= f.text_field :name %>
 </div>
