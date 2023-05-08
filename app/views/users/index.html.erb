@@ -1,7 +1,9 @@
 <h1>ユーザーの一覧です</h1>
 
-<% @users.each do |user| %>
-  <p><%= user.name %>さん　<%= link_to "#{user.name}さんのページをみる", user_path(user) %></p>
-<% end %>
+<ul>
+  <% @users.each do |user| %>
+    <li><%= user.name %>さん　<%= link_to "#{user.name}さんのページをみる", user_path(user) %></li>
+  <% end %>
+</ul>
 
 <%= paginate @users %>
