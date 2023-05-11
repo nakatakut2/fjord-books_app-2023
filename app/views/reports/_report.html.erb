@@ -1,0 +1,26 @@
+<div id="<%= dom_id report %>">
+
+  <p>
+    <strong><%= User.human_attribute_name(:name) %>:</strong>
+    <% if report.user.name.present? %>
+      <%= report.user.name %>
+    <% else %>
+      <%= report.user.email %>
+    <% end %>
+  </p>
+
+  <p>
+    <strong><%= Report.human_attribute_name(:title) %>:</strong>
+    <%= report.title %>
+  </p>
+
+  <p>
+    <strong><%= Report.human_attribute_name(:content) %>:</strong>
+    <%= report.content %>
+  </p>
+
+  <p>
+    <%= report.created_at.strftime('%Y年%m月%d日 %H時%M分 に投稿') %>
+  </p>
+
+</div>
