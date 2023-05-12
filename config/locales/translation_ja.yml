@@ -4,6 +4,7 @@ ja:
       book: 本
       user: ユーザ
       report: 日報
+      comment: コメント
 
     attributes:
       book:
@@ -21,4 +22,5 @@ ja:
         user: ユーザ名
         title: タイトル
         content: 内容
-
+  create_comment: コメントする
+  no_comments: コメントはまだありません

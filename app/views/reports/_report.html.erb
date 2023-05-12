@@ -2,11 +2,7 @@
 
   <p>
     <strong><%= User.human_attribute_name(:name) %>:</strong>
-    <% if report.user.name.present? %>
-      <%= report.user.name %>
-    <% else %>
-      <%= report.user.email %>
-    <% end %>
+    <%= report.user.name_or_email %>
   </p>
 
   <p>
