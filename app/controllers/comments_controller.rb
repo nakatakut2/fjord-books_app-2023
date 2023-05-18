@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  before_action :set_commentable, only: %i[create destroy]
   before_action :set_comment, only: [:destroy]
+  before_action :set_commentable, only: %i[create destroy]
 
   def create
     @comment = @commentable.comments.new(comment_params)
@@ -22,27 +22,12 @@ class CommentsController < ApplicationController
 
   private
 
-  def set_commentable
-    if params[:book_id]
-      @commentable = Book.find(params[:book_id])
-    elsif params[:report_id]
-      @commentable = Report.find(params[:report_id])
-    end
-  end
-
   def set_comment
     @comment = Comment.find(params[:id])
   end
 
-  def render_commentable_show
-    case @commentable.class
-    when Book
-      @book = @commentable
-      render 'books/show'
-    when Report
-      @report = @commentable
-      render 'reports/show'
-    end
+  def set_commentable
+    # This method should be overridden in the inheriting controllers
   end
 
   def comment_params
