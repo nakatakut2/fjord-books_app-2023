@@ -22,5 +22,6 @@ ja:
         user: ユーザ名
         title: タイトル
         content: 内容
+        posted_on: 投稿日
   create_comment: コメントする
   no_comments: コメントはまだありません

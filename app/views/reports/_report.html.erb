@@ -16,7 +16,8 @@
   </p>
 
   <p>
-    <%= I18n.l(report.created_at, format: :long) %>に投稿
+    <strong><%= Report.human_attribute_name(:posted_on) %>:</strong>
+    <%= I18n.l(report.created_at, format: :long) %>
   </p>
 
 </div>
