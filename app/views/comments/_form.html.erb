@@ -1,0 +1,16 @@
+<%= form_with model: [commentable, comment] do |f| %>
+  <% if comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= t('views.common.validation_error', errors: i18n_error_count(comment.errors.count), name: Comment.model_name.human.downcase) %>:</h2>
+
+      <ul>
+        <% comment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.text_field :content, required: true %>
+  <%= f.submit t('create_comment') %>
+<% end %>
