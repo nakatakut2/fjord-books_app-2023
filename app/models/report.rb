@@ -19,35 +19,29 @@ class Report < ApplicationRecord
   end
 
   def report_mention_save
-    ActiveRecord::Base.transaction(joinable: false, requires_new: true) do
+    ActiveRecord::Base.transaction do
       save!
       mention_save
     end
   end
 
   def report_mention_update(params)
-    ActiveRecord::Base.transaction(joinable: false, requires_new: true) do
+    ActiveRecord::Base.transaction do
       update!(params)
       mention_save
     end
   end
 
   def mention_save
-    before = []
-    mentioning_reports.ids.each do |before_mentioned_id|
-      before << [id, before_mentioned_id]
-    end
-    after = []
-    content.scan(%r{http://localhost:3000/reports/(\d+)}).uniq.flatten.map(&:to_i).each do |after_mentioned_id|
-      after << [id, after_mentioned_id]
-    end
+    before_ids = mentioning_reports.ids
+    after_ids = content.scan(%r{http://localhost:3000/reports/(\d+)}).uniq.flatten.map(&:to_i)
 
-    (before - after).each do |r|
-      Mention.where(mentioning_report_id: r[0], mentioned_report_id: r[1]).find_each(&:destroy!)
-    end
+    to_destroy_mentioned_ids = before_ids - after_ids
+    Mention.where(mentioning_report_id: id, mentioned_report_id: to_destroy_mentioned_ids).find_each(&:destroy!)
 
-    (after - before).each do |r|
-      Mention.create!(mentioning_report_id: r[0], mentioned_report_id: r[1])
+    to_create_mentioned_ids = after_ids - before_ids
+    to_create_mentioned_ids.each do |mentioned_id|
+      Mention.create!(mentioning_report_id: id, mentioned_report_id: mentioned_id)
     end
   end
 end

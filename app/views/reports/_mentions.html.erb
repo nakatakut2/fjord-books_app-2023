@@ -1,8 +1,8 @@
 <div>
-  <% if Mention.where(mentioned_report_id: params[:id]).exists? %>
+  <% if @report.mentioned_reports.exists? %>
     <strong><%= t('mentioned_reports') %></strong>
     <ul>
-      <% Report.find(params[:id]).mentioned_reports.each do |mentioned_report| %>
+      <% @report.mentioned_reports.each do |mentioned_report| %>
       <li>
       <%= link_to mentioned_report.title, mentioned_report %> (<%= l mentioned_report.created_at, format: :short %>)
       </li>
