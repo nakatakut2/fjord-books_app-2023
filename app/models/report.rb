@@ -18,18 +18,28 @@ class Report < ApplicationRecord
     created_at.to_date
   end
 
-  def report_mention_save
+  def save_with_mentions
+    success = true
     ActiveRecord::Base.transaction do
-      save!
-      mention_save
+      success &= save
+      success &= mention_save
+      unless success
+        raise ActiveRecord::Rollback
+      end
     end
+    success
   end
 
-  def report_mention_update(params)
+  def update_with_mentions(params)
+    success = true
     ActiveRecord::Base.transaction do
-      update!(params)
-      mention_save
+      success &= update(params)
+      success &= mention_save
+      unless success
+        raise ActiveRecord::Rollback
+      end
     end
+    success
   end
 
   def mention_save
@@ -37,11 +47,11 @@ class Report < ApplicationRecord
     after_ids = content.scan(%r{http://localhost:3000/reports/(\d+)}).uniq.flatten.map(&:to_i)
 
     to_destroy_mentioned_ids = before_ids - after_ids
-    Mention.where(mentioning_report_id: id, mentioned_report_id: to_destroy_mentioned_ids).find_each(&:destroy!)
+    Mention.where(mentioning_report_id: id, mentioned_report_id: to_destroy_mentioned_ids).find_each(&:destroy)
 
     to_create_mentioned_ids = after_ids - before_ids
     to_create_mentioned_ids.each do |mentioned_id|
-      Mention.create!(mentioning_report_id: id, mentioned_report_id: mentioned_id)
+      Mention.create(mentioning_report_id: id, mentioned_report_id: mentioned_id)
     end
   end
 end
