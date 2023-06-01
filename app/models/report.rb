@@ -40,14 +40,14 @@ class Report < ApplicationRecord
     success = false
     ActiveRecord::Base.transaction do
       raise ActiveRecord::Rollback unless update(params)
-      raise ActiveRecord::Rollback unless save_mentions
+      raise ActiveRecord::Rollback unless update_mentions
 
       success = true
     end
     success
   end
 
-  def save_mentions
+  def update_mentions
     mention_success = true
 
     before_ids = mentioning_reports.ids
