@@ -80,6 +80,7 @@ group :test do
   gem 'webdrivers'
 end
 
+gem 'bcrypt'
 gem 'carrierwave'
 gem 'devise'
 gem 'devise-i18n'
