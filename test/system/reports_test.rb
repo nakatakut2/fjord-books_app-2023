@@ -3,8 +3,6 @@
 require 'application_system_test_case'
 
 class ReportsTest < ApplicationSystemTestCase
-  include Devise::Test::IntegrationHelpers
-
   setup do
     visit new_user_session_url
     fill_in 'Eメール', with: 'user1@test.com'
