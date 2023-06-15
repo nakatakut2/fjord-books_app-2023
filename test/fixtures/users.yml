@@ -1,21 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-user1:
-  name: user1
-  email: user1@test.com
+alice:
+  name: alice
+  email: alice@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 
-user2:
-  name: user2
-  email: user2@test.com
+bob:
+  name: bob
+  email: bob@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 
-user3:
-  name: user3
-  email: user3@test.com
+carol:
+  name: carol
+  email: carol@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 
-user4:
-  name: user4
-  email: user4@test.com
+dave:
+  name: dave
+  email: dave@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
