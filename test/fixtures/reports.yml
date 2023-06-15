@@ -1,33 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-report_by_user1:
-  id: 1
-  user: user1
-  title: I'm user1.
+report_by_alice:
+  user: alice
+  title: I'm alice.
   content: Nice to meet you.
-  created_at: Tue, 30 May 2023 10:00:00 JST +09:00
 
-report_by_user2:
-  id: 2
-  user: user2
-  title: I'm user2.
+report_by_bob:
+  user: bob
+  title: I'm bob.
   content: Nice to meet you too.
-  created_at: Tue, 30 May 2023 11:00:00 JST +09:00
 
-report_by_user3:
-  id: 3
-  user: user3
-  title: I'm user3.
+report_by_carol:
+  user: carol
+  title: I'm carol.
   content: Nice to meet you too too.
-  created_at: Tue, 30 May 2023 12:00:00 JST +09:00
-
-report_to_mention_by_user4:
-  id: 4
-  user: user4
-  title: I mention to you.
-  content: >-
-          I mention to
-          http://localhost:3000/reports/1
-          and
-          http://localhost:3000/reports/2.
-  created_at: Tue, 30 May 2023 13:00:00 JST +09:00
