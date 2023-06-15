@@ -13,7 +13,7 @@ class Report < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
-  after_save :save_mentions
+  after_save :trigger_save_mentions
 
   def editable?(target_user)
     user == target_user
@@ -21,6 +21,11 @@ class Report < ApplicationRecord
 
   def created_on
     created_at.to_date
+  end
+
+  # テスト用にsave_mentionsをpublicで経由させる
+  def trigger_save_mentions
+    save_mentions
   end
 
   private
