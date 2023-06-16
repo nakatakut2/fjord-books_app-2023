@@ -53,12 +53,11 @@ class ReportsTest < ApplicationSystemTestCase
 
   test 'should destroy Report' do
     visit report_url(@report)
+    assert_text "I'm alice."
     click_on 'この日報を削除', match: :first
 
     assert_text '日報が削除されました。'
-    assert_no_text '祖母のお祝いで親族集結'
-    assert_no_text '祖母の元気な顔が見れてよかったけど、普段会わない親族もいて変に気を遣ってしまった(笑)'
-
+    assert_no_text "I'm alice."
     assert_selector 'h1', text: '日報の一覧'
   end
 end
